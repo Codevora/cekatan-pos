@@ -20,7 +20,6 @@ const FlyoutLink = ({children, href, FlyoutContent}: any) => {
      style={{
       transform: showFlyout ? "scaleX(1)" : "scaleX(0)",
      }}
-     className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-white transition-transform duration-300 ease-out"
     />
    </a>
    <AnimatePresence>

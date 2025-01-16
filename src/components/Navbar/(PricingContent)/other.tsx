@@ -1,40 +1,24 @@
+import Link from "next/link";
 const Other = () => {
  return (
-  <div className="w-64 bg-white p-6 shadow-xl">
-   <div className="mb-3 space-y-3">
-    <h3 className="font-semibold">Konsultasi Bisnis</h3>
-    <a
-     href="#"
-     className="block text-sm hover:underline">
-     Introduction
-    </a>
-    <a
-     href="#"
-     className="block text-sm hover:underline">
-     Pay as you go
-    </a>
+  <div className="w-96 bg-white p-6 shadow-xl">
+   <div className="my-auto space-y-10">
+    <Link href="https://wa.me/6282295533992">
+     <h1 className="block text-xl font-semibold hover:underline mb-3 text-yellow-600">
+      Hubungi Kami
+     </h1>
+    </Link>
+    <Link href="/">
+     <h1 className="block text-xl font-semibold hover:underline mb-3 text-yellow-600">
+      Karir Cekatan
+     </h1>
+    </Link>
+    <Link href="/">
+     <h1 className="block text-xl font-semibold hover:underline text-yellow-600">
+      Layanan Pengaduan
+     </h1>
+    </Link>
    </div>
-   <div className="mb-6 space-y-3">
-    <h3 className="font-semibold">For Companies</h3>
-    <a
-     href="#"
-     className="block text-sm hover:underline">
-     Startups
-    </a>
-    <a
-     href="#"
-     className="block text-sm hover:underline">
-     SMBs
-    </a>
-    <a
-     href="#"
-     className="block text-sm hover:underline">
-     Enterprise
-    </a>
-   </div>
-   <button className="w-full rounded-lg border-2 border-neutral-950 px-4 py-2 font-semibold transition-colors hover:bg-neutral-950 hover:text-white">
-    Contact sales
-   </button>
   </div>
  );
 };

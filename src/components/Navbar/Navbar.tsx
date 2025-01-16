@@ -13,7 +13,7 @@ const Navbar = () => {
      <img
       src="/logo.png"
       alt=""
-      className="w-20"
+      className="w-20 mt-1"
      />
     </Link>
    </ul>
@@ -21,14 +21,16 @@ const Navbar = () => {
     <FlyoutLink FlyoutContent={Service}>Layanan</FlyoutLink>
     <Link href="/">Harga</Link>
     <Link href="/">Tentang Kami</Link>
-    <FlyoutLink FlyoutContent={Consultation}>Konsultasi Bisnis</FlyoutLink>
+    <FlyoutLink FlyoutContent={Consultation}>Konsultasi</FlyoutLink>
     <FlyoutLink FlyoutContent={Other}>Lainnya</FlyoutLink>
    </ul>
-   <ul>
-    <Link href="/login">
-     <li>Sign-in</li>
+   <button className="rounded-lg px-3 py-1 bg-white ">
+    <Link
+     href="/login"
+     className="bg-gradient-to-r from-yellow-400 to-yellow-800 bg-clip-text text-transparent">
+     Masuk
     </Link>
-   </ul>
+   </button>
   </header>
  );
 };
