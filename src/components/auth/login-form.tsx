@@ -2,6 +2,7 @@
 
 import * as z from "zod";
 
+import {useState, useTransition} from "react";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 
@@ -17,11 +18,16 @@ import {
 } from "@/components/ui/form";
 
 import {CardWrapper} from "@/components/auth/card-wrapper";
-import {Button} from "@/components/ui/button"
-import {FormError} from "@/components/form-error"
-import {FormSuccess} from "@/components/form-success"
+import {Button} from "@/components/ui/button";
+import {FormError} from "@/components/form-error";
+import {FormSuccess} from "@/components/form-success";
+import {login} from "../../../actions/login";
 
 export const LoginForm = () => {
+ const [error,setError] = useState<string | undefined>("")
+ const [success, setSuccess] = useState<string | undefined>("");
+ const [isPending, startTransition] = useTransition();
+
  const form = useForm<z.infer<typeof LoginSchema>>({
   resolver: zodResolver(LoginSchema),
   defaultValues: {
@@ -30,10 +36,19 @@ export const LoginForm = () => {
   },
  });
 
-const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log(values)
-}
+ const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    setError("")
+    setSuccess("")
 
+
+    startTransition(() => {
+     login(values);
+     .then((data) => {
+        setError(data.error)
+        setSuccess(data.success)
+     })
+    });
+ };
 
  return (
   <CardWrapper
@@ -55,6 +70,7 @@ const onSubmit = (values: z.infer<typeof LoginSchema>) => {
          <FormControl>
           <Input
            {...field}
+           disabled={isPending}
            placeholder="Masukan email anda"
            type="email"
           />
@@ -72,6 +88,7 @@ const onSubmit = (values: z.infer<typeof LoginSchema>) => {
          <FormControl>
           <Input
            {...field}
+           disabled={isPending}
            placeholder="Masukkan password anda"
            type="password"
           />
@@ -84,6 +101,7 @@ const onSubmit = (values: z.infer<typeof LoginSchema>) => {
      <FormError message="" />
      <FormSuccess message="" />
      <Button
+      disabled={isPending}
       type="submit"
       className="w-full bg-gradient-to-r from-yellow-400 to-yellow-800">
       Masuk
@@ -92,4 +110,4 @@ const onSubmit = (values: z.infer<typeof LoginSchema>) => {
    </Form>
   </CardWrapper>
  );
-};
+}
