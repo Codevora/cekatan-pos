@@ -1,15 +1,15 @@
-"use server"
+"use server";
 
 import * as z from "zod";
 
-import { LoginSchema } from "../schemas";
+import {LoginSchema} from "../schemas";
 
-export const login = async (values:z.infer<typeof LoginSchema>) => {
-    const validateFields = LoginSchema.safeParse(values);
+export const login = async (values: z.infer<typeof LoginSchema>) => {
+ const validateFields = LoginSchema.safeParse(values);
 
-    if (!validateFields.success) {
-        return { error: "Invalid Fields!" }
-    }
+ if (!validateFields.success) {
+  return {error: "Email atau password yang anda masukkan salah!"};
+ }
 
-    return { success: "Email sent!" }
-}
+ return {success: "Berhasil masuk!"};
+};
